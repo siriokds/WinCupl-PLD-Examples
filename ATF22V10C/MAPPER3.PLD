@@ -1,0 +1,81 @@
+Name     MAPPER3 ;
+PartNo   00 ;
+Date     01/07/2021 ;
+Revision 01 ;
+Designer Saverio Russo;
+Company  SiRioKD ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+/* ***************** INPUT PINS ************************/
+PIN  1   = CLK;
+PIN  2   = !RESET	;
+PIN  3   = !IOWR	;
+PIN  4   = !IORD	;
+PIN  5   = !MREQ	;
+PIN  6   = !RD	;
+PIN  7   = !WR	;
+PIN  8   =  A7	;
+PIN  9   =  A6	;
+PIN  10  =  A5	;
+PIN  11  =  A14	;
+/* PIN 12 = GND	; */ /* POWER */
+
+
+/*PIN  24  = VCC	;*/ /* POWER */
+PIN  23  =  FLASH_A18	;
+PIN  22  =  FLASH_A17	;
+PIN  21  =  FLASH_A16	;	
+PIN  20  =  FLASH_A15	;
+PIN  19  =  FLASH_A14	;
+PIN  18  = D4		;
+PIN  17  = D3		;
+PIN  16  = D2		;
+PIN  15  = D1		;
+PIN  14  = D0		;
+PIN  13  = A15	;
+
+/* [17-14] / [23-20] = buried output */
+/******************* EQUATIONS *******************/
+
+
+/* FIX IO ACCESS SC-3000 / SG-1000, PUT PULLUPs to /IOWR and /IORD */
+_IORD = IORD # (!MREQ & RD);
+_IOWR = IOWR # (!MREQ & WR);
+
+E0RD = _IORD & A7 & A6 & A5;
+E0WR = _IOWR & A7 & A6 & A5;
+
+
+_FLASH_CE = MREQ & RD & (!A15 # (A15 & !A14));  /* R  0000-3FFF | 4000-7FFF | 8000-BFFF |          */
+_SRAM_CE  = MREQ &(RD # WR) & (A15 & A14);      /* RW           |           |           |C000-FFFF */
+
+
+/* Latch Data */
+FLASH_A18.d = (D4 & E0WR) # FLASH_A18 & !E0WR;
+FLASH_A17.d = (D3 & E0WR) # FLASH_A17 & !E0WR;
+FLASH_A16.d = (D2 & E0WR) # FLASH_A16 & !E0WR;
+FLASH_A15.d = (D1 & E0WR) # FLASH_A15 & !E0WR;
+FLASH_A14.d = (D0 & E0WR) # FLASH_A14 & !E0WR;
+
+/* Latch Asynchronous Reset */
+FLASH_A18.ar = RESET;
+FLASH_A17.ar = RESET;
+FLASH_A16.ar = RESET;
+FLASH_A15.ar = RESET;
+FLASH_A14.ar = RESET;
+
+/* Latch Syncronous Preset not used, def value = 0*/
+FLASH_A18.sp = 'b'0;
+FLASH_A17.sp = 'b'0;
+FLASH_A16.sp = 'b'0;
+FLASH_A15.sp = 'b'0;
+FLASH_A14.sp = 'b'0;
+
+/* Latch Output Enable */
+FLASH_A18.oe = 'b'1;
+FLASH_A17.oe = 'b'1;
+FLASH_A16.oe = 'b'1;
+FLASH_A15.oe = 'b'1;
+FLASH_A14.oe = 'b'1;
