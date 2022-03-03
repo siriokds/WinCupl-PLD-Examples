@@ -1,0 +1,155 @@
+Name     SPI_Counter ;
+PartNo   00 ;
+Date     01/07/2021 ;
+Revision 01 ;
+Designer Saverio Russo ;
+Company  SiRioKD ;
+Assembly None ;
+Location  ;
+Device   g22v10 ; /* ATF22V10C */
+
+/* ***************** INPUT PINS ************************/
+PIN  1   = CLK;
+PIN  2   = !RESET	;
+PIN  3   = !IORD	;
+PIN  4   = !IOWR	;
+PIN  5   =  A7	;
+PIN  6   =  A6	;
+PIN  7   =  A5	;
+PIN  8   =  A1	;
+PIN  9   =  A0	;
+/*PIN  10  =  	;*/
+PIN  11  =  D0	;
+/* PIN 12 = GND	; */ /* POWER */
+
+
+/*PIN  24  = VCC	;*/ /* POWER */
+PIN  23  =  COUNT_3  ;
+PIN  22  =  COUNT_2  ;
+PIN  21  =  COUNT_1  ;	
+PIN  20  =  COUNT_0  ;
+PIN  19  =  CARRY    ;
+PIN  18  =  RUN      ;
+PIN  17  =  !SPICS   ;
+PIN  16  =  !ROMSEL  ;
+PIN  15  =  !BYTERD	;
+PIN  14  =  !BYTEWR	;
+/*PIN  13  =  ;*/
+
+/* [17-14] / [23-20] = buried output */
+/******************* EQUATIONS *******************/
+
+PORTSEL = A7 & A6 & A5; /* Ex or Fx */
+
+PORT0 = !A1 & !A0;	/* Begin/End Transmission (D0 = 1 (Start), 0 (End)*/
+PORT1 = !A1 &  A0;	/* Transmit (D0 = 1 or 0)*/
+PORT2 =  A1 & !A0;	/* PUSH/POP Byte */
+PORT3 =  A1 &  A0;	/* ROMSEL (D0 = 1 or 0) */
+
+
+
+
+CSWR 	= IOWR & PORTSEL & PORT0;	/* OUT (0xE0), 1 */
+BANKWR = IOWR & PORTSEL & PORT1;	/* OUT (0xE1), x */
+
+BYTEWR = IOWR & PORTSEL & PORT2;	/* OUT (0xE2),a  */
+BYTERD = IORD & PORTSEL & PORT2;	/* IN  a,(0xE2)  */
+
+ROMSELWR = IOWR & PORTSEL & PORT3;	/* OUT (0xE1),a  */
+
+
+
+/* BANK_A14.d = (D0 & BANKWR) # BANK_A14 & !BANKWR; */
+SPICS.d = (D0 & CSWR) # SPICS & !CSWR;
+ROMSEL.d = (D0 & ROMSELWR) # ROMSEL & !ROMSELWR;
+
+
+/*RUN.j = (D0 & BANKWR);*/
+/*RUN.k = CARRY;*/
+
+/* J-K FLIP FLOP */
+/* J = BANKWR, K = CARRY */
+RUN.d =  BANKWR & !RUN
+       # BANKWR & !CARRY
+       # !CARRY & RUN; 
+
+
+/* Latch Asynchronous Reset */
+RUN.ar = RESET;
+CARRY.ar = RESET;
+SPICS.ar = RESET;
+ROMSEL.ar = RESET;
+
+COUNT_3.ar = RESET;
+COUNT_2.ar = RESET;
+COUNT_1.ar = RESET;
+COUNT_0.ar = RESET;
+
+/* Latch Syncronous Preset with ZERO on BANK WRITE */
+CARRY.sp = 'b'0;
+RUN.sp = 'b'0;
+SPICS.sp = 'b'0;
+ROMSEL.sp = 'b'0;
+
+COUNT_3.sp = 'b'0;
+COUNT_2.sp = 'b'0;
+COUNT_1.sp = 'b'0;
+COUNT_0.sp = 'b'0;
+
+/* Latch Output Enable */
+
+CARRY.oe = 'b'1;
+RUN.oe = 'b'1;
+SPICS.oe = 'b'1;
+ROMSEL.oe = 'b'1;
+
+COUNT_3.oe = 'b'1;
+COUNT_2.oe = 'b'1;
+COUNT_1.oe = 'b'1;
+COUNT_0.oe = 'b'1;
+
+
+$DEFINE S00 	'b'0000
+$DEFINE S01 	'b'0001
+$DEFINE S02 	'b'0010
+$DEFINE S03 	'b'0011
+$DEFINE S04 	'b'0100
+$DEFINE S05 	'b'0101
+$DEFINE S06 	'b'0110
+$DEFINE S07 	'b'0111
+$DEFINE S08 	'b'1000
+$DEFINE S09 	'b'1001
+$DEFINE S10 	'b'1010
+$DEFINE S11 	'b'1011
+$DEFINE S12 	'b'1100
+$DEFINE S13 	'b'1101
+$DEFINE S14 	'b'1110
+$DEFINE S15 	'b'1111
+
+FIELD count = [COUNT_3, COUNT_2, COUNT_1, COUNT_0];
+
+
+
+Sequenced count {
+
+present S00	
+	if RUN	next S01;
+      default	next S00;
+
+present S01	next S02;
+present S02	next S03;
+present S03	next S04;
+present S04	next S05;
+present S05	next S06;
+present S06	next S07;
+present S07	next S08;
+present S08	next S09;
+present S09	next S10;
+present S10	next S11;
+present S11	next S12;
+present S12	next S13;
+present S13	next S14;
+present S14	next S15 OUT CARRY;
+present S15	next S00;
+
+}
