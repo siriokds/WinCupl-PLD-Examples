@@ -57,7 +57,7 @@ ADDR_A14 = (!PAGE2 & A14) # (PAGE2 & PAGE_A14);
 
 
 /* Write byte to 4000-7FFF range to change page */
-PAGEWR = _MEMWR & !A15 & A14;
+PAGEWR = MEMWR & !A15 & A14;
 
 
 /* Latch Data */
@@ -75,7 +75,7 @@ FLASH_A14.ar = RESET;
 /* Latch Syncronous Preset not used, def value = 0*/
 FLASH_A17.sp = 'b'0;
 FLASH_A16.sp = 'b'0;
-FLASH_A15.sp = 'b'0;
+FLASH_A15.sp = 'b'1;	/* 3rd bank mapped on 8000-BFFF at startup */
 FLASH_A14.sp = 'b'0;
 
 /* Latch Output Enable */
