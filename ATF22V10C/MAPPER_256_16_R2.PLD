@@ -25,7 +25,7 @@ Device   g22v10 ;
 
 
 /* ***************** INPUT PINS ************************/
-PIN  1   = WR		;	/* Could be WR signal */ 
+PIN  1   = WR		;	/* Could be WR signal */ 	/* I clock on rising edge of WR, is it used or I need to move WR to another pin? */
 PIN  2   = !RESET	;	/* Must be a Power-On Reset circuit */
 PIN  3   = MREQ	;
 
@@ -45,7 +45,7 @@ PIN  11  = A14		;
 
 /*PIN  24  = VCC	;*/ /* POWER */
 
-PIN  [23..20] = [Q14..17];
+PIN  [23..20] = [Q14..17];	/* Registered buffers */
 
 PIN  19  = !SRAM_CS;
 PIN  18  = !FLASH_CS;
@@ -96,7 +96,7 @@ Q14.d = (D0 & PAGEWR) # (Q14 & !PAGEWR);
 [Q17..14].sp  ='B'0;
 
 /* Output Enable */
-[Q17..14].oe  ='B'1;
+[Q17..14].oe  ='B'1; 		/* Is it necessary?*/
 
 
 
