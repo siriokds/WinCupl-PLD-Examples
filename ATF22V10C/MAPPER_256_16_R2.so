@@ -1,7 +1,7 @@
 CSIM(WM): CUPL Simulation Program
 Version 5.0a Serial# 
 Copyright (c) 1983, 1998 Logical Devices, Inc.
-CREATED Sat Apr 27 10:53:27 2024
+CREATED Sat Apr 27 19:18:20 2024
 
 LISTING FOR SIMULATION FILE: MAPPER_256_16_R2.si
 
@@ -38,19 +38,12 @@ LISTING FOR SIMULATION FILE: MAPPER_256_16_R2.si
 [0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRA16
 [0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRA17
 [0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRAMRANGE
-[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRESET
 [0033sa] Please note: jedec vectors cannot be created with undefined pin numbersSRAM_CS
 [0033sa] Please note: jedec vectors cannot be created with undefined pin numbersWR
    1: Name     MAPPER_256_16_R2;
    2: PartNo   00;
-   3: Date     04/08/2023;
-                         ^
-[0025sa] Please note: inconsistent header information
-
+   3: Date     27/04/2024;
    4: Revision 01;
-                 ^
-[0025sa] Please note: inconsistent header information
-
    5: Designer Saverio Russo;
    6: Company  SiRioKD;
    7: Assembly None;
@@ -58,5 +51,39 @@ LISTING FOR SIMULATION FILE: MAPPER_256_16_R2.si
    9: Device   g22v10;
   10: 
   11: 
-  12: ORDER: A14, A15, CLK, !MREQ, !RD, !WR, D0, D1, D2, D3, Q14, Q15, Q16, Q17, RA14, RA15, RA16, RA17, !FLASH_CS, !SRAM_CS;
-[0011sa] unknown symbol:  CLK
+  12: ORDER: A14, A15, D0, D1, D2, D3, WR, MREQ, Q14, Q15, Q16, Q17, RA14, RA15, RA16, RA17, !FLASH_CS, !SRAM_CS; 
+  13: 
+  14: 
+
+===========================
+                      !    
+                      F!   
+                      LS   
+                      AR   
+                      SA   
+             M    RRRRHM   
+      AA     RQQQQAAAA__   
+      11DDDDWE11111111CC   
+      450123RQ45674567SS   
+===========================
+0001: 00000011LLLLLLLLHH
+0002: 00000011LLLLLLLLHH
+0003: 00000011LLLLLLLLHH
+0004: 00000011LLLLLLLLHH
+0005: 00000011LLLLLLLLHH
+0006: 00000011LLLLLLLLHH
+0007: 00000011LLLLLLLLHH
+0008: 00000011LLLLLLLLHH
+0009: 00000011LLLLLLLLHH
+0010: 00000011LLLLLLLLHH
+0011: 00000011LLLLLLLLHH
+0012: 00000011LLLLLLLLHH
+0013: 00000011LLLLLLLLHH
+0014: 00000011LLLLLLLLHH
+0015: 00000011LLLLLLLLHH
+0016: 00000011LLLLLLLLHH
+0017: 00000011LLLLLLLLHH
+0018: 00000011LLLLLLLLHH
+0019: 00000011LLLLLLLLHH
+0020: 00000011LLLLLLLLHH
+0021: 00000011LLLLLLLLHH

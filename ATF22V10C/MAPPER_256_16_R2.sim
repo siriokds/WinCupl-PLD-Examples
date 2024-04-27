@@ -15,7 +15,6 @@ PIN  17 =  RA14
 PIN  16 =  RA15 
 PIN  15 =  RA16 
 PIN  14 =  RA17 
-PIN   2 = !RESET 
 PIN  19 = !SRAM_CS 
 PIN   1 =  WR 
 %END

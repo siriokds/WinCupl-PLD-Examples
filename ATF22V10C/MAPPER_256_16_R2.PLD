@@ -1,36 +1,59 @@
 Name     MAPPER_256_16_R2 ;
-PartNo   00 ;
+PartNo   Lattice22V10C;
 Date     27/04/2024 ;
-Revision 02 ;
+Revision 01 ;
 Designer Saverio Russo;
 Company  SiRioKD ;
 Assembly None ;
 Location  ;
 Device   g22v10 ;
 
-
+/*
+ * Lattice GAL 22V10B pinout, DIP, top view
+ *
+ * I/CLK.[ 1     24 ].VCC
+ *     I.[ 2     23 ].I/O/Q
+ *     I.[ 3     22 ].I/O/Q
+ *     I.[ 4     21 ].I/O/Q
+ *     I.[ 5     20 ].I/O/Q
+ *     I.[ 6     19 ].I/O/Q
+ *     I [ 7     18 ].I/O/Q
+ *     I [ 8     17 ].I/O/Q
+ *     I [ 9     16 ].I/O/Q
+ *     I [ 10    15 ].I/O/Q
+ *     I [ 11    14 ].I/O/Q
+ *   GND.[ 12    13 ].I
+ *
+ */
+ 
 
 /* ***************** INPUT PINS ************************/
 PIN  1   = WR		;	/* Could be WR signal */ 
-PIN  2   = !RESET	;	/* Must be a Power-On Reset circuit */
+/*PIN  2   = !RESET	;*/	/* Must be a Power-On Reset circuit */
 PIN  3   = MREQ	;
 
-/*PIN  4   = RD		;*/
+/* PIN  4   = RD; */
 /*PIN  5   = WR		;*/
+
 /*PIN  6   = ;*/
 
-PIN  [7..10] = [D3..0];
-
-/*PIN  8   = D2		;*/
-/*PIN  9   = D1		;*/
-/*PIN  10  = D0		;*/
+PIN  7   = D3		;
+PIN  8   = D2		;
+PIN  9   = D1		;
+PIN  10  = D0		;
 
 PIN  11  = A14		;
 /* PIN 12 = GND	; */ /* POWER */
 
 
 /*PIN  24  = VCC	;*/ /* POWER */
-PIN  [23..20] = [Q14..17];
+/*PIN  [23..20] = [Q14..17];*/
+
+PIN  23 = Q14;
+PIN  22 = Q15;
+PIN  21 = Q16;
+PIN  20 = Q17;
+
 PIN  19  = !SRAM_CS;
 PIN  18  = !FLASH_CS;
 PIN  17  = RA14;
@@ -48,7 +71,7 @@ PIN  13  = A15	;
 
 /* MEMRD = (!MREQ & !RD); */
 
-PAGE2    = A15 & !A14;
+PAGE2    = (A15 & !A14);
 RAMRANGE = A15 &  A14;
 
 /* Write byte to 8000-BFFF range to change page */
@@ -68,18 +91,33 @@ RA14 = (PAGE2 & Q14) # (!PAGE2 & A14);
 
 
 /* Latch Data */
-[Q17..14].d = ([D3..D0] & PAGEWR) # ([Q17..14] & !PAGEWR);
+/*[Q17..14].d = ([D3..D0] & PAGEWR) # ([Q17..14] & !PAGEWR);*/
 
-/*Q17.d = (D3 & PAGEWR) # (Q17 & !PAGEWR);*/
-/*Q16.d = (D2 & PAGEWR) # (Q16 & !PAGEWR);*/
-/*Q15.d = (D1 & PAGEWR) # (Q15 & !PAGEWR);*/
-/*Q14.d = (D0 & PAGEWR) # (Q14 & !PAGEWR);*/
+Q17.d = (D3 & PAGEWR) # (Q17 & !PAGEWR);
+Q16.d = (D2 & PAGEWR) # (Q16 & !PAGEWR);
+Q15.d = (D1 & PAGEWR) # (Q15 & !PAGEWR);
+Q14.d = (D0 & PAGEWR) # (Q14 & !PAGEWR);
 
 /* Latch Asynchronous Reset */
-[Q17..14].ar  ='B'0;
+/*[Q17..14].ar  ='B'0;*/
+
+Q17.ar = 'B'0;
+Q16.ar = 'B'0;
+Q15.ar = 'B'0;
+Q14.ar = 'B'0;
+
 
 /* Latch Synchronous Preset */
-[Q17..14].sp  ='B'0;
+/*[Q17..14].sp  ='B'0;*/
+
+Q17.sp = 'B'0;
+Q16.sp = 'B'0;
+Q15.sp = 'B'0;
+Q14.sp = 'B'0;
+
+
+/*[Q17..14].ck  = WR;*/
+
 
 
 /* This memory mapper for Z80 should work on SG-1000 machine style:      */
