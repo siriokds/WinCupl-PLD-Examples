@@ -1,0 +1,17 @@
+#WAVEFORM
+#H Name     MAPPER_256_16_R2;
+#H PartNo   00;
+#H Date     04/08/2023;
+#E 0025 
+
+#H Revision 01;
+#E 0025 
+
+#H Designer Saverio Russo;
+#H Company  SiRioKD;
+#H Assembly None;
+#H Location ;
+#H Device   g22v10;
+#H 
+#H 
+#H ORDER: A14, A15, CLK, !MREQ, !RD, !WR, D0, D1, D2, D3, Q14, Q15, Q16, Q17, RA14, RA15, RA16, RA17, !FLASH_CS, !SRAM_CS;

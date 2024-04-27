@@ -5,7 +5,7 @@
   {Program "CUPL(WM) Version 5.0a"}
   {DBtype "Schematic"}
   {DBvrev 1.01}
-  {DBtime "Sat Apr 27 10:05:22 2024 "}
+  {DBtime "Sat Apr 27 10:53:24 2024 "}
   {DBunit "MIL"}
   {DBgrid 10}
   {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
@@ -33,111 +33,55 @@
  {SYMBOL
   {PIN_DEF
    [Ly "PINCON"]
-   {P WR {Pt "INPUT"}{Lq 0}{Ploc 100 240}}
-   {P RESET' {Pt "INPUT"}{Lq 0}{Ploc 100 200}}
-   {P MREQ {Pt "INPUT"}{Lq 0}{Ploc 100 180}}
-   {P D3 {Pt "INPUT"}{Lq 0}{Ploc 100 160}}
-   {P D2 {Pt "INPUT"}{Lq 0}{Ploc 100 140}}
-   {P D1 {Pt "INPUT"}{Lq 0}{Ploc 100 120}}
-   {P D0 {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
-   {P A14 {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
-   {P A15 {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
-   {P FLASH_CS' {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
-   {P SRAM_CS' {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
-   {P RA17 {Pt "I/O"}{Lq 0}{Ploc 320 20}}
-   {P RA16 {Pt "I/O"}{Lq 0}{Ploc 320 40}}
-   {P RA15 {Pt "I/O"}{Lq 0}{Ploc 320 60}}
-   {P RA14 {Pt "I/O"}{Lq 0}{Ploc 320 80}}
-   {P Q17 {Pt "OUTPUT"}{Lq 0}{Ploc 320 100}}
-   {P Q16 {Pt "OUTPUT"}{Lq 0}{Ploc 320 120}}
-   {P Q15 {Pt "OUTPUT"}{Lq 0}{Ploc 320 140}}
-   {P Q14 {Pt "OUTPUT"}{Lq 0}{Ploc 320 160}}
+   {P RA17 {Pt "I/O"}{Lq 0}{Ploc 280 20}}
+   {P RA16 {Pt "I/O"}{Lq 0}{Ploc 280 40}}
+   {P RA15 {Pt "I/O"}{Lq 0}{Ploc 280 60}}
+   {P RA14 {Pt "I/O"}{Lq 0}{Ploc 280 80}}
+   {P FLASH_CS' {Pt "I/O"}{Lq 0}{Ploc 280 100}}
+   {P SRAM_CS' {Pt "I/O"}{Lq 0}{Ploc 280 120}}
   }
 
   {PKG
    [Ly "REFDES"]
    [Ts 25][Tj "CB"][Tr 0][Tm "N"]
-   {Rdl 210 270}
+   {Rdl 190 150}
 
    [Ly "PINNUM"]
-   [Ts 15][Tj "RC"]
-   {Pnl 120 250}
-   [Ts 15][Tj "RC"]
-   {Pnl 120 210}
-   {Pnl 120 190}
-   {Pnl 120 170}
-   {Pnl 120 150}
-   {Pnl 120 130}
-   {Pnl 120 110}
-   {Pnl 120 90}
-   {Pnl 120 70}
-   {Pnl 120 50}
-   {Pnl 120 30}
    [Ts 15][Tj "LC"]
-   {Pnl 300 30}
-   {Pnl 300 50}
-   {Pnl 300 70}
-   {Pnl 300 90}
-   {Pnl 300 110}
-   {Pnl 300 130}
-   {Pnl 300 150}
-   {Pnl 300 170}
+   {Pnl 260 30}
+   {Pnl 260 50}
+   {Pnl 260 70}
+   {Pnl 260 90}
+   {Pnl 260 110}
+   {Pnl 260 130}
 
-   {Sd A 1 2 3 7 8 9 10 11 13 18 19 14 15 16 17 20 21 22 23}
+   {Sd A 14 15 16 17 18 19}
   }
 
   {PIC
    [Ly "GATE"]
    [Ts 15][Tj "LC"][Tr 0][Tm "N"]
-   {R 130 260 290 0}
-   {L 130 240 100 240}
-   {L 130 250 140 240 130 230}
-   {L 120 200 100 200}
-   {C 125 200 5}
-   {L 130 180 100 180}
-   {L 130 160 100 160}
-   {L 130 140 100 140}
-   {L 130 120 100 120}
-   {L 130 100 100 100}
-   {L 130 80 100 80}
-   {L 130 60 100 60}
-   {L 120 40 100 40}
-   {C 125 40 5}
-   {L 120 20 100 20}
-   {C 125 20 5}
-   {L 290 20 320 20}
-   {L 290 40 320 40}
-   {L 290 60 320 60}
-   {L 290 80 320 80}
-   {L 290 100 320 100}
-   {L 290 120 320 120}
-   {L 290 140 320 140}
-   {L 290 160 320 160}
+   {R 130 140 250 0}
+   {L 250 20 280 20}
+   {L 250 40 280 40}
+   {L 250 60 280 60}
+   {L 250 80 280 80}
+   {C 255 100 5}
+   {L 260 100 280 100}
+   {C 255 120 5}
+   {L 260 120 280 120}
    [Ly "PINNAM"]
    [Tj "LC"]
-   {T "WR" 140 240}
-   {T "RESET'" 140 200}
-   {T "MREQ" 140 180}
-   {T "D3" 140 160}
-   {T "D2" 140 140}
-   {T "D1" 140 120}
-   {T "D0" 140 100}
-   {T "A14" 140 80}
-   {T "A15" 140 60}
-   {T "FLASH_CS'" 140 40}
-   {T "SRAM_CS'" 140 20}
    [Tj "RC"]
-   {T "RA17" 280 20}
-   {T "RA16" 280 40}
-   {T "RA15" 280 60}
-   {T "RA14" 280 80}
-   {T "Q17" 280 100}
-   {T "Q16" 280 120}
-   {T "Q15" 280 140}
-   {T "Q14" 280 160}
+   {T "RA17" 240 20}
+   {T "RA16" 240 40}
+   {T "RA15" 240 60}
+   {T "RA14" 240 80}
+   {T "FLASH_CS'" 240 100}
+   {T "SRAM_CS'" 240 120}
    [Ly "DEVICE"]
    [Tj "CT"]
-   {T "G22V10" 210 -10}
+   {T "VIRTUAL" 190 -10}
   }
 
   {ATR
@@ -148,7 +92,7 @@
    {EX
     [Ly "ATTR2"]
     [Ts 12][Tj "CT"][Tr 0][Tm "N"]
-    {At PLD D:\GITHUB\SIRIOKDS\WINCUPL-PLD-EXAMPLES\ATF22V10C\MAPPER_256_16_R2 210 260}
+    {At PLD D:\GITHUB\SIRIOKDS\WINCUPL-PLD-EXAMPLES\ATF22V10C\MAPPER_256_16_R2 190 140}
    }
   }
  }
@@ -158,28 +102,6 @@
   }
 
   {NET_DEF
-   {N WR
-   }
-   {N RESET'
-   }
-   {N MREQ
-   }
-   {N D3
-   }
-   {N D2
-   }
-   {N D1
-   }
-   {N D0
-   }
-   {N A14
-   }
-   {N A15
-   }
-   {N FLASH_CS'
-   }
-   {N SRAM_CS'
-   }
    {N RA17
    }
    {N RA16
@@ -188,13 +110,9 @@
    }
    {N RA14
    }
-   {N Q17
+   {N FLASH_CS'
    }
-   {N Q16
-   }
-   {N Q15
-   }
-   {N Q14
+   {N SRAM_CS'
    }
   }
 

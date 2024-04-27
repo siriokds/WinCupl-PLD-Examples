@@ -24,6 +24,10 @@ PIN   1 =  WR
 %END
 
 %EQUATION
+FLASH_CS =>
+    !A15 & !MREQ
+  # !A14 & !MREQ
+
 PAGE2 =>
     !A14 & A15
 
@@ -32,95 +36,73 @@ PAGEWR =>
 
 Q14.d  =>
     !A14 & A15 & D0 & !MREQ & !WR
-  # !A15 & !Q14
-  # A14 & !Q14
-  # MREQ & !Q14
-  # !Q14 & WR
+  # !A15 & Q14
+  # A14 & Q14
+  # MREQ & Q14
+  # Q14 & WR
 
-Q14.ar Q15.ar Q16.ar Q17.ar  =>
+Q14.ar  =>
     0 
 
-Q14.sp Q15.sp Q16.sp Q17.sp  =>
+Q14.sp  =>
     0 
 
 Q15.d  =>
     !A14 & A15 & D1 & !MREQ & !WR
-  # !A15 & !Q15
-  # A14 & !Q15
-  # MREQ & !Q15
-  # !Q15 & WR
+  # !A15 & Q15
+  # A14 & Q15
+  # MREQ & Q15
+  # Q15 & WR
 
 Q15.ar  =>
-    
+    0 
+
 Q15.sp  =>
-    
+    0 
+
 Q16.d  =>
     !A14 & A15 & D2 & !MREQ & !WR
-  # !A15 & !Q16
-  # A14 & !Q16
-  # MREQ & !Q16
-  # !Q16 & WR
+  # !A15 & Q16
+  # A14 & Q16
+  # MREQ & Q16
+  # Q16 & WR
 
 Q16.ar  =>
-    
+    0 
+
 Q16.sp  =>
-    
+    0 
+
 Q17.d  =>
     !A14 & A15 & D3 & !MREQ & !WR
-  # !A15 & !Q17
-  # A14 & !Q17
-  # MREQ & !Q17
-  # !Q17 & WR
+  # !A15 & Q17
+  # A14 & Q17
+  # MREQ & Q17
+  # Q17 & WR
 
 Q17.ar  =>
-    
+    0 
+
 Q17.sp  =>
-    
+    0 
+
 RA14 =>
-    !A14 & A15 & !Q14
+    !A14 & A15 & Q14
   # A14
 
 RA15 =>
-    !A14 & A15 & !Q15
+    !A14 & A15 & Q15
 
 RA16 =>
-    !A14 & A15 & !Q16
+    !A14 & A15 & Q16
 
 RA17 =>
-    !A14 & A15 & !Q17
+    !A14 & A15 & Q17
 
 RAMRANGE =>
     A14 & A15
 
-_FLASH_CS =>
-    !A15 & !MREQ
-  # !A14 & !MREQ
-
-_SRAM_CS =>
+SRAM_CS =>
     A14 & A15 & !MREQ
-
-Q14.oe  =>
-    1 
-
-Q15.oe  =>
-    1 
-
-Q16.oe  =>
-    1 
-
-Q17.oe  =>
-    1 
-
-RA14.oe  =>
-    1 
-
-RA15.oe  =>
-    1 
-
-RA16.oe  =>
-    1 
-
-RA17.oe  =>
-    1 
 
 %END

@@ -1,0 +1,62 @@
+CSIM(WM): CUPL Simulation Program
+Version 5.0a Serial# 
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+CREATED Sat Apr 27 10:53:27 2024
+
+LISTING FOR SIMULATION FILE: MAPPER_256_16_R2.si
+
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbers
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbers
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersA14
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersA15
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersD0
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersD1
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersD2
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersD3
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersFLASH_CS
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersMREQ
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersPAGE2
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersPAGEWR
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ14
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ14
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ14
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ14
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ15
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ15
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ15
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ15
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ16
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ16
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ16
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ16
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ17
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ17
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ17
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersQ17
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRA14
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRA15
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRA16
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRA17
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRAMRANGE
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersRESET
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersSRAM_CS
+[0033sa] Please note: jedec vectors cannot be created with undefined pin numbersWR
+   1: Name     MAPPER_256_16_R2;
+   2: PartNo   00;
+   3: Date     04/08/2023;
+                         ^
+[0025sa] Please note: inconsistent header information
+
+   4: Revision 01;
+                 ^
+[0025sa] Please note: inconsistent header information
+
+   5: Designer Saverio Russo;
+   6: Company  SiRioKD;
+   7: Assembly None;
+   8: Location ;
+   9: Device   g22v10;
+  10: 
+  11: 
+  12: ORDER: A14, A15, CLK, !MREQ, !RD, !WR, D0, D1, D2, D3, Q14, Q15, Q16, Q17, RA14, RA15, RA16, RA17, !FLASH_CS, !SRAM_CS;
+[0011sa] unknown symbol:  CLK
