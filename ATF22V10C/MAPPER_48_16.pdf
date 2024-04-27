@@ -1,0 +1,156 @@
+{COMPONENT D:\GITHUB\SIRIOKDS\WINCUPL-PLD-EXAMPLES\ATF22V10C\MAPPER_48_16.SYM
+
+ {ENVIRONMENT
+  {PDIFvrev 3.00}
+  {Program "CUPL(WM) Version 5.0a"}
+  {DBtype "Schematic"}
+  {DBvrev 1.01}
+  {DBtime "Sat Aug 05 07:02:09 2023 "}
+  {DBunit "MIL"}
+  {DBgrid 10}
+  {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
+          "PINNAM" 6 "PINCON" 4 "REFDES" 2 "ATTR" 6 "SDOT" 1 
+          "DEVICE" 5 "OUTLIN" 5 "ATTR2" 6 "NOTES" 6 "NETNAM" 4 
+          "CMPNAM" 5 "BORDER" 5}
+ }
+
+ {USER
+  {VIEW
+   {Mode SYMB}
+   {Nlst OPEN}
+   {Vw 0 0 2}
+   {Lv 12 2 2 2 0 0 2 2 2 2 0 0 2 1 2 0 0 0 0}
+   {Gs 10 10}
+  }
+ }
+
+ {DISPLAY
+  [Ly "PINNUM"]
+  [Ls "SOLID"][Wd 0]
+  [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+ }
+
+ {SYMBOL
+  {PIN_DEF
+   [Ly "PINCON"]
+   {P MREQ' {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
+   {P RD' {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
+   {P WR' {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
+   {P A14 {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
+   {P A15 {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
+   {P RA17 {Pt "I/O"}{Lq 0}{Ploc 320 20}}
+   {P RA16 {Pt "I/O"}{Lq 0}{Ploc 320 40}}
+   {P RA15 {Pt "I/O"}{Lq 0}{Ploc 320 60}}
+   {P RA14 {Pt "I/O"}{Lq 0}{Ploc 320 80}}
+   {P FLASH_CS' {Pt "I/O"}{Lq 0}{Ploc 320 100}}
+   {P SRAM_CS' {Pt "I/O"}{Lq 0}{Ploc 320 120}}
+  }
+
+  {PKG
+   [Ly "REFDES"]
+   [Ts 25][Tj "CB"][Tr 0][Tm "N"]
+   {Rdl 210 150}
+
+   [Ly "PINNUM"]
+   [Ts 15][Tj "RC"]
+   {Pnl 120 110}
+   {Pnl 120 90}
+   {Pnl 120 70}
+   {Pnl 120 50}
+   {Pnl 120 30}
+   [Ts 15][Tj "LC"]
+   {Pnl 300 30}
+   {Pnl 300 50}
+   {Pnl 300 70}
+   {Pnl 300 90}
+   {Pnl 300 110}
+   {Pnl 300 130}
+
+   {Sd A 3 4 5 11 13 14 15 16 17 18 19}
+  }
+
+  {PIC
+   [Ly "GATE"]
+   [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+   {R 130 140 290 0}
+   {L 120 100 100 100}
+   {C 125 100 5}
+   {L 120 80 100 80}
+   {C 125 80 5}
+   {L 120 60 100 60}
+   {C 125 60 5}
+   {L 130 40 100 40}
+   {L 130 20 100 20}
+   {L 290 20 320 20}
+   {L 290 40 320 40}
+   {L 290 60 320 60}
+   {L 290 80 320 80}
+   {C 295 100 5}
+   {L 300 100 320 100}
+   {C 295 120 5}
+   {L 300 120 320 120}
+   [Ly "PINNAM"]
+   [Tj "LC"]
+   {T "MREQ'" 140 100}
+   {T "RD'" 140 80}
+   {T "WR'" 140 60}
+   {T "A14" 140 40}
+   {T "A15" 140 20}
+   [Tj "RC"]
+   {T "RA17" 280 20}
+   {T "RA16" 280 40}
+   {T "RA15" 280 60}
+   {T "RA14" 280 80}
+   {T "FLASH_CS'" 280 100}
+   {T "SRAM_CS'" 280 120}
+   [Ly "DEVICE"]
+   [Tj "CT"]
+   {T "G22V10" 210 -10}
+  }
+
+  {ATR
+   {IN
+    {Org 100 20}
+    {Ty 255}
+   }
+   {EX
+    [Ly "ATTR2"]
+    [Ts 12][Tj "CT"][Tr 0][Tm "N"]
+    {At PLD D:\GITHUB\SIRIOKDS\WINCUPL-PLD-EXAMPLES\ATF22V10C\MAPPER_48_16 210 140}
+   }
+  }
+ }
+
+ {DETAIL
+  {ANNOTATE
+  }
+
+  {NET_DEF
+   {N MREQ'
+   }
+   {N RD'
+   }
+   {N WR'
+   }
+   {N A14
+   }
+   {N A15
+   }
+   {N RA17
+   }
+   {N RA16
+   }
+   {N RA15
+   }
+   {N RA14
+   }
+   {N FLASH_CS'
+   }
+   {N SRAM_CS'
+   }
+  }
+
+  {SUBCOMP
+  }
+ }
+}

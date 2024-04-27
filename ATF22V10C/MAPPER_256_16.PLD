@@ -1,0 +1,91 @@
+Name     MAPPER_256_16 ;
+PartNo   00 ;
+Date     04/08/2023 ;
+Revision 01 ;
+Designer Saverio Russo;
+Company  SiRioKD ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+
+/* ***************** INPUT PINS ************************/
+PIN  1   = CLK		;	/* Could be WR signal */ 
+PIN  2   = !RESET	;	/* Must be a Power-On Reset circuit */
+PIN  3   = !MREQ	;
+PIN  4   = !RD		;
+PIN  5   = !WR		;
+/*PIN  6   = ;*/
+PIN  7   = D3		;
+PIN  8   = D2		;
+PIN  9   = D1		;
+PIN  10  = D0		;
+PIN  11  = A14		;
+/* PIN 12 = GND	; */ /* POWER */
+
+
+/*PIN  24  = VCC	;*/ /* POWER */
+PIN  23  =  PAGE_A14;
+PIN  22  =  PAGE_A15;
+PIN  21  =  PAGE_A16;
+PIN  20  =  PAGE_A17;
+PIN  19  = !SRAM_CS;
+PIN  18  = !FLASH_CS;
+PIN  17  = RA14;
+PIN  16  = RA15;
+PIN  15  = RA16;
+PIN  14  = RA17;
+PIN  13  = A15	;
+
+
+
+
+/* [17-14] / [23-20] = buried output */
+/******************* EQUATIONS *******************/
+
+
+MEMRD = (MREQ & RD);
+MEMWR = (MREQ & WR);
+
+PAGE2 = A15 & !A14;
+
+/* Chip select */
+_FLASH_CS = MREQ & (!A15 # PAGE2);   /* R  0000-3FFF | 4000-7FFF | 8000-BFFF |           */
+_SRAM_CS  = MREQ & ( A15 & A14);     /* RW           |           |           | C000-FFFF */
+
+
+RA17 = 					(PAGE2 & PAGE_A17);
+RA16 = 					(PAGE2 & PAGE_A16);
+RA15 = (!PAGE2 & A15) # (PAGE2 & PAGE_A15);
+RA14 = (!PAGE2 & A14) # (PAGE2 & PAGE_A14);
+
+
+/* Write byte to 4000-7FFF range to change page */
+PAGEWR = MEMWR & !A15 & A14;
+
+
+
+/* Latch Data */
+PAGE_A17.d = (D3 & PAGEWR) # PAGE_A17 & !PAGEWR;
+PAGE_A16.d = (D2 & PAGEWR) # PAGE_A16 & !PAGEWR;
+PAGE_A15.d = (D1 & PAGEWR) # PAGE_A15 & !PAGEWR;
+PAGE_A14.d = (D0 & PAGEWR) # PAGE_A14 & !PAGEWR;
+
+/* Latch Asynchronous Reset */
+PAGE_A17.ar = RESET;
+PAGE_A16.ar = RESET;
+PAGE_A15.ar = RESET;
+PAGE_A14.ar = RESET;
+
+/* Latch Syncronous Preset not used, def value = 0*/
+PAGE_A17.ap = 'b'0;
+PAGE_A16.ap = 'b'0;
+PAGE_A15.ap = 'b'1;
+PAGE_A14.ap = 'b'0;
+
+/* Latch Output Enable */
+PAGE_A17.oe = 'b'1;
+PAGE_A16.oe = 'b'1;
+PAGE_A15.oe = 'b'1;
+PAGE_A14.oe = 'b'1;
+

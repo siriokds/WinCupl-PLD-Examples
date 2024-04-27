@@ -1,0 +1,50 @@
+Name     MAPPER3 ;
+PartNo   00 ;
+Date     02/10/2022 ;
+Revision 01 ;
+Designer Saverio Russo;
+Company  SiRioKD ;
+Assembly None ;
+Location  ;
+Device   g16v8 ;
+
+/* ***************** INPUT PINS ************************/
+PIN  1   = CLK;
+PIN  2   = !ROM_ENA	;
+PIN  3   = !RD		;
+PIN  4   = !WR		;
+PIN  5   = !MREQ	;
+PIN  6   =  A15	;
+PIN  7   =  A14	;
+/* PIN  8   =  ; */
+/* PIN  9   =  ; */
+/* PIN 10 = GND	; */ /* POWER */
+
+
+/*PIN  20  = VCC	;*/ /* POWER */
+PIN  19  = !ROM_CE	;
+PIN  18  = !ROM_OE	;
+PIN  17  = !RAM_CE	;
+PIN  16  = !RAM_OE	;
+/* PIN  15  = RAM_CE2	; */
+/* PIN  14  =  ; */
+/* PIN  13  =  ; */
+/* PIN  12  =  ; */
+PIN  11  = !OE		;
+
+/******************* EQUATIONS *******************/
+
+PAGE0 = !A15 & !A14		/* 0000-3FFF           */
+NPAGE0 = !PAGE0			/* 4000-FFFF           */
+
+MEMRD = MREQ & RD;
+MEMWR = MREQ & WR;
+
+
+_ROM_CE = MREQ & PAGE0;
+_ROM_OE = ROM_ENA & MEMRD;
+
+_RAM_CE  = MREQ;
+_RAM_OE = (PAGE0 & !ROM_ENA & MEMRD) # (NPAGE0 & MEMRD);
+
+

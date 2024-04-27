@@ -1,0 +1,225 @@
+{COMPONENT D:\GITHUB\SIRIOKDS\WINCUPL-PLD-EXAMPLES\ATF22V10C\MAPPER3.SYM
+
+ {ENVIRONMENT
+  {PDIFvrev 3.00}
+  {Program "CUPL(WM) Version 5.0a"}
+  {DBtype "Schematic"}
+  {DBvrev 1.01}
+  {DBtime "Thu Aug 17 08:25:58 2023 "}
+  {DBunit "MIL"}
+  {DBgrid 10}
+  {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
+          "PINNAM" 6 "PINCON" 4 "REFDES" 2 "ATTR" 6 "SDOT" 1 
+          "DEVICE" 5 "OUTLIN" 5 "ATTR2" 6 "NOTES" 6 "NETNAM" 4 
+          "CMPNAM" 5 "BORDER" 5}
+ }
+
+ {USER
+  {VIEW
+   {Mode SYMB}
+   {Nlst OPEN}
+   {Vw 0 0 2}
+   {Lv 12 2 2 2 0 0 2 2 2 2 0 0 2 1 2 0 0 0 0}
+   {Gs 10 10}
+  }
+ }
+
+ {DISPLAY
+  [Ly "PINNUM"]
+  [Ls "SOLID"][Wd 0]
+  [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+ }
+
+ {SYMBOL
+  {PIN_DEF
+   [Ly "PINCON"]
+   {P CLK {Pt "INPUT"}{Lq 0}{Ploc 100 360}}
+   {P RESET' {Pt "INPUT"}{Lq 0}{Ploc 100 320}}
+   {P IOWR' {Pt "INPUT"}{Lq 0}{Ploc 100 300}}
+   {P IORD' {Pt "INPUT"}{Lq 0}{Ploc 100 280}}
+   {P MREQ' {Pt "INPUT"}{Lq 0}{Ploc 100 260}}
+   {P RD' {Pt "INPUT"}{Lq 0}{Ploc 100 240}}
+   {P WR' {Pt "INPUT"}{Lq 0}{Ploc 100 220}}
+   {P A7 {Pt "INPUT"}{Lq 0}{Ploc 100 200}}
+   {P A6 {Pt "INPUT"}{Lq 0}{Ploc 100 180}}
+   {P A5 {Pt "INPUT"}{Lq 0}{Ploc 100 160}}
+   {P A14 {Pt "INPUT"}{Lq 0}{Ploc 100 140}}
+   {P A15 {Pt "INPUT"}{Lq 0}{Ploc 100 120}}
+   {P D0 {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
+   {P D1 {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
+   {P D2 {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
+   {P D3 {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
+   {P D4 {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
+   {P FLASH_14 {Pt "OUTPUT"}{Lq 0}{Ploc 330 20}}
+   {P FLASH_15 {Pt "OUTPUT"}{Lq 0}{Ploc 330 40}}
+   {P FLASH_16 {Pt "OUTPUT"}{Lq 0}{Ploc 330 60}}
+   {P FLASH_17 {Pt "OUTPUT"}{Lq 0}{Ploc 330 80}}
+   {P FLASH_18 {Pt "OUTPUT"}{Lq 0}{Ploc 330 100}}
+  }
+
+  {PKG
+   [Ly "REFDES"]
+   [Ts 25][Tj "CB"][Tr 0][Tm "N"]
+   {Rdl 215 390}
+
+   [Ly "PINNUM"]
+   [Ts 15][Tj "RC"]
+   {Pnl 120 370}
+   [Ts 15][Tj "RC"]
+   {Pnl 120 330}
+   {Pnl 120 310}
+   {Pnl 120 290}
+   {Pnl 120 270}
+   {Pnl 120 250}
+   {Pnl 120 230}
+   {Pnl 120 210}
+   {Pnl 120 190}
+   {Pnl 120 170}
+   {Pnl 120 150}
+   {Pnl 120 130}
+   {Pnl 120 110}
+   {Pnl 120 90}
+   {Pnl 120 70}
+   {Pnl 120 50}
+   {Pnl 120 30}
+   [Ts 15][Tj "LC"]
+   {Pnl 310 30}
+   {Pnl 310 50}
+   {Pnl 310 70}
+   {Pnl 310 90}
+   {Pnl 310 110}
+
+   {Sd A 1 2 3 4 5 6 7 8 9 10 11 13 14 15 16 17 18 19 20 21 22 23}
+  }
+
+  {PIC
+   [Ly "GATE"]
+   [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+   {R 130 380 300 0}
+   {L 130 360 100 360}
+   {L 130 370 140 360 130 350}
+   {L 120 320 100 320}
+   {C 125 320 5}
+   {L 120 300 100 300}
+   {C 125 300 5}
+   {L 120 280 100 280}
+   {C 125 280 5}
+   {L 120 260 100 260}
+   {C 125 260 5}
+   {L 120 240 100 240}
+   {C 125 240 5}
+   {L 120 220 100 220}
+   {C 125 220 5}
+   {L 130 200 100 200}
+   {L 130 180 100 180}
+   {L 130 160 100 160}
+   {L 130 140 100 140}
+   {L 130 120 100 120}
+   {L 130 100 100 100}
+   {L 130 80 100 80}
+   {L 130 60 100 60}
+   {L 130 40 100 40}
+   {L 130 20 100 20}
+   {L 300 20 330 20}
+   {L 300 40 330 40}
+   {L 300 60 330 60}
+   {L 300 80 330 80}
+   {L 300 100 330 100}
+   [Ly "PINNAM"]
+   [Tj "LC"]
+   {T "CLK" 140 360}
+   {T "RESET'" 140 320}
+   {T "IOWR'" 140 300}
+   {T "IORD'" 140 280}
+   {T "MREQ'" 140 260}
+   {T "RD'" 140 240}
+   {T "WR'" 140 220}
+   {T "A7" 140 200}
+   {T "A6" 140 180}
+   {T "A5" 140 160}
+   {T "A14" 140 140}
+   {T "A15" 140 120}
+   {T "D0" 140 100}
+   {T "D1" 140 80}
+   {T "D2" 140 60}
+   {T "D3" 140 40}
+   {T "D4" 140 20}
+   [Tj "RC"]
+   {T "FLASH_14" 290 20}
+   {T "FLASH_15" 290 40}
+   {T "FLASH_16" 290 60}
+   {T "FLASH_17" 290 80}
+   {T "FLASH_18" 290 100}
+   [Ly "DEVICE"]
+   [Tj "CT"]
+   {T "G22V10" 215 -10}
+  }
+
+  {ATR
+   {IN
+    {Org 100 20}
+    {Ty 255}
+   }
+   {EX
+    [Ly "ATTR2"]
+    [Ts 12][Tj "CT"][Tr 0][Tm "N"]
+    {At PLD D:\GITHUB\SIRIOKDS\WINCUPL-PLD-EXAMPLES\ATF22V10C\MAPPER3 215 380}
+   }
+  }
+ }
+
+ {DETAIL
+  {ANNOTATE
+  }
+
+  {NET_DEF
+   {N CLK
+   }
+   {N RESET'
+   }
+   {N IOWR'
+   }
+   {N IORD'
+   }
+   {N MREQ'
+   }
+   {N RD'
+   }
+   {N WR'
+   }
+   {N A7
+   }
+   {N A6
+   }
+   {N A5
+   }
+   {N A14
+   }
+   {N A15
+   }
+   {N D0
+   }
+   {N D1
+   }
+   {N D2
+   }
+   {N D3
+   }
+   {N D4
+   }
+   {N FLASH_14
+   }
+   {N FLASH_15
+   }
+   {N FLASH_16
+   }
+   {N FLASH_17
+   }
+   {N FLASH_18
+   }
+  }
+
+  {SUBCOMP
+  }
+ }
+}

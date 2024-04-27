@@ -1,0 +1,53 @@
+Name     MAPPER_48_16;
+PartNo   00 ;
+Date     03/08/2023 ;
+Revision 01 ;
+Designer Saverio Russo;
+Company  SiRioKD ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+
+/* ***************** INPUT PINS ************************/
+/*PIN  1   = ;*/
+/*PIN  2   = ;*/
+PIN  3   = !MREQ	;
+PIN  4   = !RD		;
+PIN  5   = !WR		;
+/*PIN  6   = ;*/
+/*PIN  7   = ;*/
+/*PIN  8   = ;*/
+/*PIN  9   = ;*/
+/*PIN  10  = ;*/
+PIN  11  = A14		;
+/* PIN 12 = GND	; */ /* POWER */
+
+
+/*PIN  24  = VCC	;*/ /* POWER */
+/*PIN  23  = */
+/*PIN  22  = */
+/*PIN  21  = */
+/*PIN  20  = */
+PIN  19  = !SRAM_CS;
+PIN  18  = !FLASH_CS;
+PIN  17  = RA14;
+PIN  16  = RA15;
+PIN  15  = RA16;
+PIN  14  = RA17;
+PIN  13  = A15	;
+
+/******************* EQUATIONS *******************/
+
+
+RA17 = 'b'0;
+RA16 = 'b'0;
+RA15 = A15;
+RA14 = A14;
+
+PAGE2 = A15 & !A14;
+
+/* Chip select */
+FLASH_CS = MREQ & (!A15 # PAGE2);		/* R  0000-3FFF | 4000-7FFF | 8000-BFFF |           */
+SRAM_CS  = MREQ & ( A15 & A14);			/* RW           |           |           | C000-FFFF */
+

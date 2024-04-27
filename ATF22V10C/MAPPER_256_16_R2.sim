@@ -1,0 +1,126 @@
+%SIGNAL
+PIN  11 =  A14 
+PIN  13 =  A15 
+PIN  10 =  D0 
+PIN   9 =  D1 
+PIN   8 =  D2 
+PIN   7 =  D3 
+PIN  18 = !FLASH_CS 
+PIN   3 =  MREQ 
+PIN  23 =  Q14 
+PIN  22 =  Q15 
+PIN  21 =  Q16 
+PIN  20 =  Q17 
+PIN  17 =  RA14 
+PIN  16 =  RA15 
+PIN  15 =  RA16 
+PIN  14 =  RA17 
+PIN   2 = !RESET 
+PIN  19 = !SRAM_CS 
+PIN   1 =  WR 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+PAGE2 =>
+    !A14 & A15
+
+PAGEWR =>
+    !A14 & A15 & !MREQ & !WR
+
+Q14.d  =>
+    !A14 & A15 & D0 & !MREQ & !WR
+  # !A15 & !Q14
+  # A14 & !Q14
+  # MREQ & !Q14
+  # !Q14 & WR
+
+Q14.ar Q15.ar Q16.ar Q17.ar  =>
+    0 
+
+Q14.sp Q15.sp Q16.sp Q17.sp  =>
+    0 
+
+Q15.d  =>
+    !A14 & A15 & D1 & !MREQ & !WR
+  # !A15 & !Q15
+  # A14 & !Q15
+  # MREQ & !Q15
+  # !Q15 & WR
+
+Q15.ar  =>
+    
+Q15.sp  =>
+    
+Q16.d  =>
+    !A14 & A15 & D2 & !MREQ & !WR
+  # !A15 & !Q16
+  # A14 & !Q16
+  # MREQ & !Q16
+  # !Q16 & WR
+
+Q16.ar  =>
+    
+Q16.sp  =>
+    
+Q17.d  =>
+    !A14 & A15 & D3 & !MREQ & !WR
+  # !A15 & !Q17
+  # A14 & !Q17
+  # MREQ & !Q17
+  # !Q17 & WR
+
+Q17.ar  =>
+    
+Q17.sp  =>
+    
+RA14 =>
+    !A14 & A15 & !Q14
+  # A14
+
+RA15 =>
+    !A14 & A15 & !Q15
+
+RA16 =>
+    !A14 & A15 & !Q16
+
+RA17 =>
+    !A14 & A15 & !Q17
+
+RAMRANGE =>
+    A14 & A15
+
+_FLASH_CS =>
+    !A15 & !MREQ
+  # !A14 & !MREQ
+
+_SRAM_CS =>
+    A14 & A15 & !MREQ
+
+Q14.oe  =>
+    1 
+
+Q15.oe  =>
+    1 
+
+Q16.oe  =>
+    1 
+
+Q17.oe  =>
+    1 
+
+RA14.oe  =>
+    1 
+
+RA15.oe  =>
+    1 
+
+RA16.oe  =>
+    1 
+
+RA17.oe  =>
+    1 
+
+%END

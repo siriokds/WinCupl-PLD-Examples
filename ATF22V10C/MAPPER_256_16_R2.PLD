@@ -1,0 +1,102 @@
+Name     MAPPER_256_16_R2 ;
+PartNo   00 ;
+Date     27/04/2024 ;
+Revision 02 ;
+Designer Saverio Russo;
+Company  SiRioKD ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+/* USED DEVICE IS ATF22V10C from MicroChip */
+
+/* This memory mapper for Z80 should work on SG-1000 machine style:      */
+
+/* The mapper uses 16KB pages, so memory is divided in 4 PAGES:          */
+/* ROM is mapped in the range 0000-BFFF (PAGE 0 to 2)                    */
+/* RAM is mapped in the range C000-FFFF (PAGE 3)                         */
+
+/* To swap PAGE 2 Z80 should write a page number writing to PAGE2 itself */
+/* Of the 8bit value written in PAGE 2 range,                            */
+/*  only the lower 4 bits are used D3 to D0 determines the 4 high bits of address A17..A14 */
+
+/* With this configuration, a 256KB can be used, so 16 banks of 16KB */
+
+
+
+/* ***************** INPUT PINS ************************/
+PIN  1   = WR		;	/* Could be WR signal */ 
+PIN  2   = !RESET	;	/* Must be a Power-On Reset circuit */
+PIN  3   = MREQ	;
+
+/*PIN  4   = RD		;*/
+/*PIN  5   = WR		;*/
+/*PIN  6   = ;*/
+
+PIN  [7..10] = [D3..0];
+
+/*PIN  8   = D2		;*/
+/*PIN  9   = D1		;*/
+/*PIN  10  = D0		;*/
+
+PIN  11  = A14		;
+/* PIN 12 = GND	; */ /* POWER */
+
+
+/*PIN  24  = VCC	;*/ /* POWER */
+
+PIN  [23..20] = [Q14..17];
+
+PIN  19  = !SRAM_CS;
+PIN  18  = !FLASH_CS;
+PIN  17  = RA14;
+PIN  16  = RA15;
+PIN  15  = RA16;
+PIN  14  = RA17;
+PIN  13  = A15	;
+
+
+
+
+/* [17-14] / [23-20] = buried output */
+/******************* EQUATIONS *******************/
+
+
+PAGE2    = A15 & !A14;
+RAMRANGE = A15 &  A14;
+
+/* Write byte to 8000-BFFF range to change page */
+PAGEWR = (!MREQ & !WR) & PAGE2;
+
+
+/* Chip select */
+_SRAM_CS  = !MREQ &  RAMRANGE;      /* RW           |           |           | C000-FFFF */
+_FLASH_CS = !MREQ & !RAMRANGE;      /* R  0000-3FFF | 4000-7FFF | 8000-BFFF |           */
+
+
+RA17 = (PAGE2 & Q17);
+RA16 = (PAGE2 & Q16);
+RA15 = (PAGE2 & Q15);
+RA14 = (PAGE2 & Q14) # (!PAGE2 & A14);
+
+
+
+/* Latch Data */
+/*[Q17..14].d = ([D3..D0] & PAGEWR) # ([Q17..14] & !PAGEWR);*/ /* It can be done?*/
+
+Q17.d = (D3 & PAGEWR) # (Q17 & !PAGEWR);
+Q16.d = (D2 & PAGEWR) # (Q16 & !PAGEWR);
+Q15.d = (D1 & PAGEWR) # (Q15 & !PAGEWR);
+Q14.d = (D0 & PAGEWR) # (Q14 & !PAGEWR);
+
+/* Latch Asynchronous Reset */
+[Q17..14].ar  ='B'0;
+
+/* Latch Synchronous Preset */
+[Q17..14].sp  ='B'0;
+
+/* Output Enable */
+[Q17..14].oe  ='B'1;
+
+
+

@@ -1,0 +1,151 @@
+%SIGNAL
+PIN  10 =  A5 
+PIN   9 =  A6 
+PIN   8 =  A7 
+PIN  11 =  A14 
+PIN  13 =  A15 
+PIN   1 =  CLK 
+PIN  14 =  D0 
+PIN  15 =  D1 
+PIN  16 =  D2 
+PIN  17 =  D3 
+PIN  18 =  D4 
+PIN  19 =  FLASH_A14 
+PIN  20 =  FLASH_A15 
+PIN  21 =  FLASH_A16 
+PIN  22 =  FLASH_A17 
+PIN  23 =  FLASH_A18 
+PIN   4 = !IORD 
+PIN   3 = !IOWR 
+PIN   5 = !MREQ 
+PIN   6 = !RD 
+PIN   2 = !RESET 
+PIN   7 = !WR 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+E0RD =>
+    A5 & A6 & A7 & !MREQ & RD
+  # A5 & A6 & A7 & IORD
+
+E0WR =>
+    A5 & A6 & A7 & !MREQ & WR
+  # A5 & A6 & A7 & IOWR
+
+FLASH_A14.d  =>
+    A5 & A6 & A7 & D0 & !IOWR
+  # A5 & A6 & A7 & D0 & MREQ & !WR
+  # !A7 & !FLASH_A14
+  # !A6 & !FLASH_A14
+  # !A5 & !FLASH_A14
+  # !FLASH_A14 & IOWR & WR
+  # !FLASH_A14 & IOWR & !MREQ
+
+FLASH_A14.ar FLASH_A15.ar FLASH_A16.ar FLASH_A17.ar FLASH_A18.ar  =>
+    !RESET
+
+FLASH_A14.oe  =>
+    1 
+
+FLASH_A14.sp FLASH_A15.sp FLASH_A16.sp FLASH_A17.sp FLASH_A18.sp  =>
+    0 
+
+FLASH_A15.d  =>
+    A5 & A6 & A7 & D1 & !IOWR
+  # A5 & A6 & A7 & D1 & MREQ & !WR
+  # !A7 & !FLASH_A15
+  # !A6 & !FLASH_A15
+  # !A5 & !FLASH_A15
+  # !FLASH_A15 & IOWR & WR
+  # !FLASH_A15 & IOWR & !MREQ
+
+FLASH_A15.ar  =>
+    
+FLASH_A15.oe  =>
+    1 
+
+FLASH_A15.sp  =>
+    
+FLASH_A16.d  =>
+    A5 & A6 & A7 & D2 & !IOWR
+  # A5 & A6 & A7 & D2 & MREQ & !WR
+  # !A7 & !FLASH_A16
+  # !A6 & !FLASH_A16
+  # !A5 & !FLASH_A16
+  # !FLASH_A16 & IOWR & WR
+  # !FLASH_A16 & IOWR & !MREQ
+
+FLASH_A16.ar  =>
+    
+FLASH_A16.oe  =>
+    1 
+
+FLASH_A16.sp  =>
+    
+FLASH_A17.d  =>
+    A5 & A6 & A7 & D3 & !IOWR
+  # A5 & A6 & A7 & D3 & MREQ & !WR
+  # !A7 & !FLASH_A17
+  # !A6 & !FLASH_A17
+  # !A5 & !FLASH_A17
+  # !FLASH_A17 & IOWR & WR
+  # !FLASH_A17 & IOWR & !MREQ
+
+FLASH_A17.ar  =>
+    
+FLASH_A17.oe  =>
+    1 
+
+FLASH_A17.sp  =>
+    
+FLASH_A18.d  =>
+    A5 & A6 & A7 & D4 & !IOWR
+  # A5 & A6 & A7 & D4 & MREQ & !WR
+  # !A7 & !FLASH_A18
+  # !A6 & !FLASH_A18
+  # !A5 & !FLASH_A18
+  # !FLASH_A18 & IOWR & WR
+  # !FLASH_A18 & IOWR & !MREQ
+
+FLASH_A18.ar  =>
+    
+FLASH_A18.oe  =>
+    1 
+
+FLASH_A18.sp  =>
+    
+_FLASH_CE =>
+    !A15 & MREQ & RD
+  # !A14 & A15 & MREQ & RD
+
+_IORD =>
+    IORD
+  # !MREQ & RD
+
+_IOWR =>
+    IOWR
+  # !MREQ & WR
+
+_SRAM_CE =>
+    A14 & A15 & MREQ & WR
+  # A14 & A15 & MREQ & RD
+
+D0.oe  =>
+    0 
+
+D1.oe  =>
+    0 
+
+D2.oe  =>
+    0 
+
+D3.oe  =>
+    0 
+
+D4.oe  =>
+    0 
+
+%END

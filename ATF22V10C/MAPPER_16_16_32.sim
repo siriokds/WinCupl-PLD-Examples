@@ -1,0 +1,62 @@
+%SIGNAL
+PIN  11 =  A14 
+PIN  13 =  A15 
+PIN  18 = !FLASH_CS 
+PIN   3 = !MREQ 
+PIN  17 =  RA14 
+PIN  16 =  RA15 
+PIN  15 =  RA16 
+PIN  14 =  RA17 
+PIN   4 = !RD 
+PIN  19 = !SRAM_CS 
+PIN   5 = !WR 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+FLASH_CS =>
+    !A14 & !A15 & !MREQ
+  # A15 & !MREQ
+
+PAGE0 =>
+    !A14 & !A15
+
+PAGE1 =>
+    A14 & !A15
+
+RA14 =>
+    A14
+
+RA15 =>
+    A15
+
+RA16 =>
+    0 
+
+RA17 =>
+    0 
+
+SRAM_CS =>
+    A14 & !A15 & !MREQ
+
+FLASH_CS.oe  =>
+    1 
+
+RA14.oe  =>
+    1 
+
+RA15.oe  =>
+    1 
+
+RA16.oe  =>
+    1 
+
+RA17.oe  =>
+    1 
+
+SRAM_CS.oe  =>
+    1 
+
+%END
